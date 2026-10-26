@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <title>Project Details — Bavadharani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .details-page{width:min(1000px,86%);margin:0 auto;padding:64px 0 90px}
+    .back-link{display:inline-flex;align-items:center;gap:10px;color:var(--cyan);font-size:12px;margin-bottom:42px}
+    .project-hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;padding:clamp(26px,5vw,54px);background:radial-gradient(ellipse at 80% 5%,rgba(114,242,220,.13),transparent 35%),linear-gradient(140deg,rgba(25,36,62,.92),rgba(11,15,27,.96))}
+    .project-hero:after{content:'✓';position:absolute;right:7%;top:12%;font-size:clamp(100px,19vw,190px);font-weight:800;color:rgba(114,242,220,.06);line-height:1;pointer-events:none}
+    .eyebrow-line{font:10px var(--mono);letter-spacing:.15em;color:var(--cyan);text-transform:uppercase}
+    h1{font-size:clamp(42px,7vw,72px);line-height:1.04;letter-spacing:-.06em;margin:20px 0}
+    .hero-description{max-width:720px;color:var(--muted);font-size:15px;line-height:1.95;position:relative;z-index:1}
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px;position:relative;z-index:1}
+    .tag-row span{font:10px var(--mono);padding:8px 10px;border:1px solid var(--line);border-radius:5px;color:#dce5f6;background:#ffffff05}
+    .detail-section{margin-top:40px;padding:clamp(22px,4vw,34px);border:1px solid var(--line);border-radius:14px;background:rgba(15,20,34,.7)}
+    .detail-section h2{font-size:clamp(22px,4vw,30px);letter-spacing:-.04em;margin:0 0 16px}
+    .detail-section h2 span{color:var(--cyan)}
+    .detail-section p{color:var(--muted);font-size:13px;line-height:1.95;margin:0 0 12px}
+    .detail-section p:last-child{margin-bottom:0}
+    .feature-grid,.workflow-grid,.tech-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+    .info-card{padding:18px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(145deg,#151d30aa,#0d1220aa)}
+    .info-number{font:10px var(--mono);color:var(--cyan);letter-spacing:.12em}
+    .info-card h3{font-size:14px;margin:10px 0 6px}
+    .info-card p{font-size:12px;line-height:1.8;margin:0}
+    .workflow-step{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+    .workflow-step:last-child{border-bottom:0;padding-bottom:0}
+    .step-number{flex:0 0 32px;height:32px;border:1px solid rgba(114,242,220,.35);border-radius:8px;display:grid;place-items:center;color:var(--cyan);font:11px var(--mono)}
+    .workflow-step h3{font-size:13px;margin:1px 0 4px}.workflow-step p{margin:0;font-size:12px}
+    .tech-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tech-item{padding:15px;border:1px solid var(--line);border-radius:8px;font-size:12px;color:#e1e7f5}
+    .tech-item small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
+    .note-box{border-left:2px solid var(--cyan);padding:13px 16px;background:rgba(114,242,220,.05);color:#c4cfdf;font-size:12px;line-height:1.8;margin-top:20px}
+    .page-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .project-jump{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 34px}
+    .project-jump a{border:1px solid var(--line);border-radius:7px;padding:10px 13px;color:#dce5f6;background:#ffffff05;font:10px var(--mono);letter-spacing:.04em}
+    .project-jump a:hover{border-color:var(--cyan);color:var(--cyan)}
+    .project-divider{margin-top:70px;padding-top:25px;border-top:1px solid var(--line)}
+    .project-hero.water-hero{background:radial-gradient(ellipse at 80% 5%,rgba(79,140,255,.16),transparent 35%),linear-gradient(140deg,rgba(25,36,62,.92),rgba(11,15,27,.96)}
+    .project-hero.solar-hero{background:radial-gradient(ellipse at 80% 5%,rgba(255,196,90,.13),transparent 35%),linear-gradient(140deg,rgba(25,36,62,.92),rgba(11,15,27,.96)}
+    .project-hero.upi-hero{background:radial-gradient(ellipse at 80% 5%,rgba(114,242,220,.15),transparent 35%),linear-gradient(140deg,rgba(25,36,62,.92),rgba(11,15,27,.96))}
+  @media(max-width:650px){.details-page{padding-top:35px}.feature-grid,.workflow-grid,.tech-grid{grid-template-columns:1fr}.project-hero:after{right:4%;top:5%}.hero-description{font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Back to Bavadharani's portfolio"><span class="brand-mark">B.</span><span>BAVADHARANI<span class="brand-dot">.</span></span></a>
+    <nav><a href="index.html#about">About</a><a href="index.html#skills">Skills</a><a href="index.html#projects">Projects</a><a class="nav-contact" href="index.html#contact">Contact <span>↗</span></a></nav>
+  </header>
+  <main class="details-page">
+    <a class="back-link" href="index.html#projects">← Back to all projects</a>
+    <div class="project-jump" aria-label="Jump to project details"><a href="#code-guard">01 · CODE GUARD AI</a><a href="#water-project">02 · WATER DISTRIBUTION</a><a href="#solar-tracker">03 · 360° SOLAR TRACKER</a><a href="#secure-upi">04 · SECURE UPI</a></div>
+    <section class="project-hero" id="code-guard">
+      <div class="eyebrow-line"><span class="status-dot"></span> Project 01 · AI + Web Platform · In Progress</div>
+      <h1>Code <span class="gradient-text">Guard AI</span></h1>
+      <p class="hero-description">An Agentic AI-powered website development and deployment concept designed to help users move from an idea to a deployed website. The platform aims to generate a website from a user's prompt, review the code, identify common errors, check dependencies, examine security risks, and guide the deployment process before sharing a live website link.</p>
+      <div class="tag-row"><span>React</span><span>Node.js</span><span>Agentic AI Concepts</span><span>Code Analysis</span><span>Security Validation</span><span>Deployment Automation</span></div>
+    </section>
+
+    <section class="detail-section">
+      <h2><span>01 /</span> Project overview</h2>
+      <p>Building and deploying a website can involve several separate tasks: creating the code, finding errors, installing dependencies, reviewing security, and configuring deployment. These steps can be difficult for beginners and may require switching between multiple tools.</p>
+      <p>Code Guard AI brings these tasks into one planned workflow. A user starts by describing the website they want. The platform is intended to help create the initial website, then review and prepare the project for deployment. Users can also provide a GitHub repository link after creating their website so the platform can analyse the source project.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2><span>02 /</span> Problem statement</h2>
+      <p>Website development and deployment often require manual debugging, dependency management, security checks, and deployment configuration. Missing a step can cause build failures, broken pages, or security concerns. Beginners may find it difficult to identify what needs to be fixed before publishing a website.</p>
+      <p><strong>Proposed solution:</strong> provide a guided, AI-assisted workflow that reviews the project, highlights issues, supports fixes, validates important security concerns, and helps prepare the website for deployment.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2><span>03 /</span> Key features</h2>
+      <div class="feature-grid">
+        <article class="info-card"><div class="info-number">FEATURE 01</div><h3>Prompt-based website creation</h3><p>The user describes the website they want, and the platform is designed to use AI assistance to generate an initial website project.</p></article>
+        <article class="info-card"><div class="info-number">FEATURE 02</div><h3>GitHub project import</h3><p>After creating a website, the user can provide a GitHub repository link for source-code review and deployment preparation.</p></article>
+        <article class="info-card"><div class="info-number">FEATURE 03</div><h3>Code review and error detection</h3><p>Analyse project files to identify likely code errors and build issues, then suggest or support appropriate corrections.</p></article>
+        <article class="info-card"><div class="info-number">FEATURE 04</div><h3>Dependency checks</h3><p>Check required packages and dependencies so missing or inconsistent requirements can be identified before deployment.</p></article>
+        <article class="info-card"><div class="info-number">FEATURE 05</div><h3>Security validation</h3><p>Review for common security concerns, exposed secrets, and risky configuration. External API usage should be identified and flagged for review rather than treated as automatically safe.</p></article>
+        <article class="info-card"><div class="info-number">FEATURE 06</div><h3>Deployment and report</h3><p>Guide the deployment workflow and aim to provide the resulting live website link along with a summary of checks and deployment status.</p></article>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <h2><span>04 /</span> How it is intended to work</h2>
+      <div class="workflow-step"><span class="step-number">01</span><div><h3>Login and open the dashboard</h3><p>The user enters the platform and starts a new website project from the dashboard.</p></div></div>
+      <div class="workflow-step"><span class="step-number">02</span><div><h3>Describe the website</h3><p>The user enters a prompt describing the purpose, pages, and expected features of the website.</p></div></div>
+      <div class="workflow-step"><span class="step-number">03</span><div><h3>Generate or import the project</h3><p>AI assistance helps create the initial website. Alternatively, the user can provide a GitHub repository link for an existing project.</p></div></div>
+      <div class="workflow-step"><span class="step-number">04</span><div><h3>Review code and dependencies</h3><p>The platform checks project files for possible errors, build issues, and missing dependencies, then presents findings and possible fixes.</p></div></div>
+      <div class="workflow-step"><span class="step-number">05</span><div><h3>Run security checks</h3><p>Review configuration, exposed credentials, and external API usage. Flag items that need user approval or manual review before deployment.</p></div></div>
+      <div class="workflow-step"><span class="step-number">06</span><div><h3>Prepare deployment and show results</h3><p>After the required checks, continue with deployment and show the live link and a report of the checks performed and any remaining warnings.</p></div></div>
+      <div class="note-box">Security note: automated checks can reduce risk, but they cannot guarantee that a project is completely secure. Secrets should not be exposed in source code, and external API connections should be reviewed before use.</div>
+    </section>
+
+    <section class="detail-section">
+      <h2><span>05 /</span> Technologies and tools</h2>
+      <div class="tech-grid">
+        <div class="tech-item">React.js<small>Frontend user interface</small></div>
+        <div class="tech-item">Node.js<small>Backend and project workflow</small></div>
+        <div class="tech-item">Agentic AI concepts<small>Task-oriented assistance</small></div>
+        <div class="tech-item">GitHub<small>Repository source and version control</small></div>
+        <div class="tech-item">Security checks<small>Review and validation stage</small></div>
+        <div class="tech-item">Cloud deployment<small>Target publishing workflow</small></div>
+      </div>
+      <p style="margin-top:18px">The project is being developed as a learning and implementation project. The listed technologies describe the planned/current project direction; individual automated checks and deployment integrations depend on the implementation completed.</p>
+    </section>
+
+    <section class="detail-section">
+      <h2><span>06 /</span> Expected outcome</h2>
+      <p>Code Guard AI aims to make the website preparation process more organised and beginner-friendly by bringing code review, dependency checks, security review, and deployment guidance into one place. The expected result is a clearer development workflow, earlier visibility of common problems, and a deployment summary that helps the user understand what was checked.</p>
+      <div class="page-actions"><a class="button button-primary" href="index.html#contact">Discuss this project <span>↗</span></a><a class="button button-ghost" href="index.html#projects">Back to projects <span>←</span></a></div>
+    </section>
+
+    <div class="project-divider" id="water-project">
+      <section class="project-hero water-hero">
+        <div class="eyebrow-line"><span class="status-dot"></span> Project 02 · IoT + Hardware · Team Project</div>
+        <h1>Equal Distribution<br><span class="gradient-text">of Water</span></h1>
+        <p class="hero-description">An IoT-based hardware project focused on a common real-world problem: water may not reach every connected area or user in a balanced way. The project explores how monitoring and controlling water flow can help distribute available water more evenly and reduce avoidable wastage.</p>
+        <div class="tag-row"><span>Internet of Things</span><span>Water Management</span><span>Hardware Prototype</span><span>Team Project</span><span>Resource Efficiency</span></div>
+      </section>
+      <section class="detail-section">
+        <h2><span>01 /</span> Project overview</h2>
+        <p>The aim of <strong>Equal Distribution of Water using IoT</strong> is to explore a smarter way to manage water distribution. In a basic manual arrangement, water flow can vary because of pressure differences, uneven demand, or the way outlets are opened and closed. This can cause some outlets to receive more water while others receive less.</p>
+        <p>An IoT approach can combine sensing, a controller, and water-flow control components so the system can observe conditions and respond according to its design. The overall goal is fairer distribution, better visibility of the system, and more responsible use of water. This was a team hardware project and was recognised in a project competition.</p>
+      </section>
+      <section class="detail-section">
+        <h2><span>02 /</span> Problem statement and objective</h2>
+        <p><strong>Problem:</strong> uneven water distribution can lead to shortages at some outlets, excess flow at others, and inefficient use of a limited resource. Manual monitoring may also make it difficult to notice imbalances quickly.</p>
+        <p><strong>Objective:</strong> develop an IoT-oriented solution concept that can monitor relevant water-distribution conditions and help manage flow so that connected destinations receive a more balanced share according to the system's rules.</p>
+        <div class="feature-grid">
+          <article class="info-card"><div class="info-number">OBJECTIVE 01</div><h3>Fairer distribution</h3><p>Work toward reducing differences in water availability between connected outlets or sections.</p></article>
+          <article class="info-card"><div class="info-number">OBJECTIVE 02</div><h3>Monitoring</h3><p>Make the condition of the water system easier to observe than relying only on manual checks.</p></article>
+          <article class="info-card"><div class="info-number">OBJECTIVE 03</div><h3>Reduce wastage</h3><p>Support more careful use of water by identifying imbalances or unnecessary flow where the design allows.</p></article>
+          <article class="info-card"><div class="info-number">OBJECTIVE 04</div><h3>Automation potential</h3><p>Use sensor information and controller logic to support timely responses instead of depending entirely on manual operation.</p></article>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h2><span>03 /</span> How the system works — concept</h2>
+        <div class="workflow-step"><span class="step-number">01</span><div><h3>Water enters the distribution setup</h3><p>A source supplies water to a pipe or distribution network connected to the required outlets or sections.</p></div></div>
+        <div class="workflow-step"><span class="step-number">02</span><div><h3>Conditions are monitored</h3><p>In an IoT implementation, suitable sensors may measure flow, level, or another parameter relevant to the prototype's design.</p></div></div>
+        <div class="workflow-step"><span class="step-number">03</span><div><h3>The controller evaluates readings</h3><p>A microcontroller can compare the sensor readings with the distribution rules and determine whether an outlet needs more or less flow.</p></div></div>
+        <div class="workflow-step"><span class="step-number">04</span><div><h3>Flow is adjusted when supported</h3><p>Depending on the actual hardware, a control mechanism such as a valve or pump can be used to change flow and improve balance.</p></div></div>
+        <div class="workflow-step"><span class="step-number">05</span><div><h3>Status can be shared</h3><p>With suitable connectivity and software, system readings or status can be made available for remote monitoring. This depends on the features implemented in the prototype.</p></div></div>
+        <div class="note-box">The exact sensors, controller board, valve/pump arrangement, and communication method were not specified in the portfolio information available. The steps above describe a typical IoT system concept; they should be edited to match the components actually used in your project.</div>
+      </section>
+      <section class="detail-section">
+        <h2><span>04 /</span> Main modules</h2>
+        <div class="feature-grid">
+          <article class="info-card"><div class="info-number">MODULE 01</div><h3>Sensing layer</h3><p>Collects water-related readings, such as flow or level, if those sensors are part of the design.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 02</div><h3>Controller and logic</h3><p>Processes readings and applies the project's distribution rules.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 03</div><h3>Water-flow mechanism</h3><p>Routes or regulates water through the physical setup, depending on the hardware chosen.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 04</div><h3>IoT monitoring</h3><p>Provides connectivity or status display if the prototype includes a communication and monitoring interface.</p></article>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h2><span>05 /</span> Applications, benefits and challenges</h2>
+        <p><strong>Potential applications:</strong> small-scale water distribution demonstrations, educational IoT prototypes, irrigation experiments, storage-tank management, or other settings where water flow needs to be monitored. Suitability for a real installation depends on testing and system design.</p>
+        <p><strong>Expected benefits:</strong> better visibility of water flow, a more systematic approach to balancing distribution, reduced need for constant manual observation, and awareness of water conservation.</p>
+        <p><strong>Engineering challenges:</strong> sensor accuracy, varying inlet pressure, blockages or leaks, reliable connectivity, safe operation around water and electronics, and choosing a fair distribution rule for different demand levels.</p>
+        <p><strong>My learning:</strong> this project provided experience in approaching a practical resource-management problem through a hardware and IoT perspective, collaborating as a team, and considering how monitoring and control can improve a physical system.</p>
+        <div class="page-actions"><a class="button button-primary" href="index.html#contact">Discuss this project <span>↗</span></a><a class="button button-ghost" href="#solar-tracker">Next project: Solar Tracker ↓</a><a class="button button-ghost" href="index.html#projects">Back to projects <span>←</span></a></div>
+      </section>
+    </div>
+
+    <div class="project-divider" id="solar-tracker">
+      <section class="project-hero solar-hero">
+        <div class="eyebrow-line"><span class="status-dot"></span> Project 03 · Renewable Energy + Hardware</div>
+        <h1>360° <span class="gradient-text">Solar Tracker</span></h1>
+        <p class="hero-description">A hardware project designed to adjust a solar panel's direction as the apparent position of the Sun changes. The central idea is to let the panel face the sunlight more directly over a wider range of angles, helping it capture available sunlight more effectively than a fixed panel under suitable conditions.</p>
+        <div class="tag-row"><span>Solar Energy</span><span>Sunlight Tracking</span><span>Hardware</span><span>Panel Orientation</span><span>Energy Optimisation</span></div>
+      </section>
+      <section class="detail-section">
+        <h2><span>01 /</span> Project overview</h2>
+        <p>A fixed solar panel stays in one direction even though the Sun's apparent position changes throughout the day. Because the angle of incoming sunlight changes, the panel may not always receive light at the most favourable angle.</p>
+        <p>The <strong>360° Solar Tracker</strong> project explores moving or orienting the panel so it can follow sunlight across a wide range of directions. The goal is to make better use of the available sunlight and improve the panel's exposure as conditions change. The term “360°” describes the intended broad rotational tracking range; the actual movement depends on the mechanical design and its limits.</p>
+      </section>
+      <section class="detail-section">
+        <h2><span>02 /</span> Problem statement and objective</h2>
+        <p><strong>Problem:</strong> a fixed panel cannot continually change its orientation to follow the Sun. At some times, sunlight arrives at an angle that is less favourable for the panel.</p>
+        <p><strong>Objective:</strong> design a tracking mechanism that changes the panel's orientation toward the brighter direction, with the intention of improving sunlight capture during the day.</p>
+        <div class="feature-grid">
+          <article class="info-card"><div class="info-number">GOAL 01</div><h3>Follow sunlight</h3><p>Detect or determine the direction with stronger sunlight and orient the panel toward it.</p></article>
+          <article class="info-card"><div class="info-number">GOAL 02</div><h3>Wide-angle movement</h3><p>Provide broad rotational coverage within the limits of the mount, motors, wiring, and control system.</p></article>
+          <article class="info-card"><div class="info-number">GOAL 03</div><h3>Use sunlight effectively</h3><p>Reduce avoidable misalignment between the panel and incoming sunlight during tracking periods.</p></article>
+          <article class="info-card"><div class="info-number">GOAL 04</div><h3>Explore automation</h3><p>Use a control process to adjust orientation instead of relying only on manual repositioning.</p></article>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h2><span>03 /</span> How it works — concept</h2>
+        <div class="workflow-step"><span class="step-number">01</span><div><h3>Sunlight reaches the sensing arrangement</h3><p>A tracking design may use light sensors arranged to compare brightness from different directions, or it may calculate the Sun's position using time and location.</p></div></div>
+        <div class="workflow-step"><span class="step-number">02</span><div><h3>The controller compares the direction</h3><p>A controller interprets the sensor readings or position calculation and determines whether the panel should move.</p></div></div>
+        <div class="workflow-step"><span class="step-number">03</span><div><h3>The drive mechanism rotates the panel</h3><p>A suitable motor and mechanical mount adjust the panel's direction. A true full-range 360° design needs to account for mechanical stops, cable twisting, stability, and safe movement.</p></div></div>
+        <div class="workflow-step"><span class="step-number">04</span><div><h3>Tracking repeats as sunlight changes</h3><p>The system periodically checks the direction and makes small adjustments so the panel can continue to face a favourable direction.</p></div></div>
+        <div class="workflow-step"><span class="step-number">05</span><div><h3>Solar output can be compared</h3><p>To evaluate the project, output from the tracking panel can be compared with a fixed panel under similar sunlight and time conditions, if measurement equipment is available.</p></div></div>
+        <div class="note-box">A 360° tracker can mean full azimuth rotation, while some solar trackers use two axes to change both horizontal direction and tilt. The exact movement, sensor type, controller, and motor depend on the hardware actually built. This description explains the general concept and does not assume a specific component list.</div>
+      </section>
+      <section class="detail-section">
+        <h2><span>04 /</span> Main modules and components</h2>
+        <div class="feature-grid">
+          <article class="info-card"><div class="info-number">MODULE 01</div><h3>Solar panel</h3><p>Converts incident sunlight into electrical energy.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 02</div><h3>Sun-position sensing</h3><p>May use light sensors or a calculated Sun position to guide panel movement.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 03</div><h3>Controller</h3><p>Processes readings and decides when and in which direction the panel should move.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 04</div><h3>Motor and mount</h3><p>Provides controlled physical movement while supporting the panel securely.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 05</div><h3>Power and wiring</h3><p>Supplies the control system and safely connects sensors, drive components, and panel measurement points.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 06</div><h3>Output measurement</h3><p>Voltage, current, or power readings can help evaluate whether tracking improves performance.</p></article>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h2><span>05 /</span> Benefits, challenges and applications</h2>
+        <p><strong>Potential benefits:</strong> improved alignment with sunlight during suitable conditions, automated panel positioning, a practical demonstration of renewable-energy technology, and a way to study how panel orientation affects output.</p>
+        <p><strong>Potential applications:</strong> educational solar-energy prototypes, demonstrations of tracking control, and small-scale experiments comparing fixed and tracking panel orientations. Actual energy gains depend on location, weather, tracking accuracy, panel geometry, motor energy consumption, and maintenance.</p>
+        <p><strong>Engineering challenges:</strong> sensor readings can be affected by clouds or shadows; motors consume energy; the mount must withstand wind and panel weight; and wiring, movement limits, calibration, and outdoor protection need careful consideration.</p>
+        <p><strong>How to evaluate it:</strong> record voltage and current from the panel over the same period for fixed and tracking positions, under comparable conditions. Comparing power (voltage × current) and energy over time provides a stronger evaluation than observing movement alone.</p>
+        <p><strong>My learning:</strong> this project connects hardware design with renewable energy and automation. It highlights how sensing, control logic, and mechanical movement can work together to solve a real-world energy-use problem.</p>
+        <div class="page-actions"><a class="button button-primary" href="index.html#contact">Discuss this project <span>↗</span></a><a class="button button-ghost" href="#water-project">Previous project: Water Distribution ↑</a><a class="button button-ghost" href="index.html#projects">Back to projects <span>←</span></a></div>
+      </section>
+    </div>
+
+    <div class="project-divider" id="secure-upi">
+      <section class="project-hero upi-hero">
+        <div class="eyebrow-line"><span class="status-dot"></span> Project 04 · UPI Security + Fraud Prevention · Concept</div>
+        <h1><span class="gradient-text">Secure UPI</span></h1>
+        <p class="hero-description">Secure UPI is a payment-safety project concept intended to help users check a QR code before making a UPI payment. It scans the QR data, examines the payment address and displayed payee details for warning signs, and gives the user a chance to review the information before continuing to a trusted UPI app to authorise the payment.</p>
+        <div class="tag-row"><span>QR Code Scanning</span><span>UPI ID Validation</span><span>Fraud Awareness</span><span>Payment Confirmation</span><span>Security-first UX</span></div>
+      </section>
+      <section class="detail-section">
+        <h2><span>01 /</span> Project overview</h2>
+        <p>QR codes make digital payments quick, but a user can be tricked into scanning a code that sends money to an unintended recipient. <strong>Secure UPI</strong> is designed as an extra review step before payment. Instead of asking users to trust a QR code blindly, the system aims to read the QR contents, show the destination UPI ID and payee information when available, and flag details that appear invalid or suspicious.</p>
+        <p>The intended outcome is to help users make a more informed decision before they approve a transaction. The app should not collect or store a UPI PIN, OTP, or banking password. Actual payment authorisation should happen inside a trusted UPI app or payment provider.</p>
+      </section>
+      <section class="detail-section">
+        <h2><span>02 /</span> Problem statement and objectives</h2>
+        <p><strong>Problem:</strong> people may scan a substituted or misleading QR code without noticing that the payment recipient is different from the person or business they intended to pay. A QR code can contain syntactically valid data and still be used fraudulently.</p>
+        <p><strong>Objective:</strong> create a clear verification flow that checks the QR data, displays recipient information, warns about detectable issues, and lets the user decide whether to proceed.</p>
+        <div class="feature-grid">
+          <article class="info-card"><div class="info-number">OBJECTIVE 01</div><h3>Scan the QR code</h3><p>Read the QR payload using the device camera or an uploaded QR image, with the required camera permission.</p></article>
+          <article class="info-card"><div class="info-number">OBJECTIVE 02</div><h3>Inspect payment details</h3><p>Parse the UPI payment address and other supported fields, then check that the data follows the expected format.</p></article>
+          <article class="info-card"><div class="info-number">OBJECTIVE 03</div><h3>Make recipient clear</h3><p>Show the UPI ID and available recipient or merchant information so the user can compare it with the intended payee.</p></article>
+          <article class="info-card"><div class="info-number">OBJECTIVE 04</div><h3>Warn before payment</h3><p>Flag invalid or unexpected details and ask the user to stop and verify them when anything looks suspicious.</p></article>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h2><span>03 /</span> How the project works</h2>
+        <div class="workflow-grid">
+          <div class="workflow-step"><span class="step-number">01</span><div><h3>Open Secure UPI</h3><p>The user opens the scanner and grants camera access if they choose to scan a live QR code.</p></div></div>
+          <div class="workflow-step"><span class="step-number">02</span><div><h3>Scan and decode</h3><p>The scanner reads the QR content and checks whether it appears to be a supported UPI payment payload. If it cannot be decoded or parsed, it should not continue automatically.</p></div></div>
+          <div class="workflow-step"><span class="step-number">03</span><div><h3>Validate the details</h3><p>The app checks the structure of the UPI address and relevant fields, and identifies missing, malformed, or unexpected values that it knows how to detect.</p></div></div>
+          <div class="workflow-step"><span class="step-number">04</span><div><h3>Review recipient information</h3><p>The screen shows the available payee name, UPI ID, and amount if the QR includes one. The user should compare these details with the intended recipient.</p></div></div>
+          <div class="workflow-step"><span class="step-number">05</span><div><h3>Warn or continue</h3><p>If the QR data is invalid or a check raises a warning, the app asks the user to stop and verify. If the details look acceptable, the user may choose to open a trusted UPI app to continue.</p></div></div>
+          <div class="workflow-step"><span class="step-number">06</span><div><h3>Authorise payment securely</h3><p>The user confirms the recipient and amount and completes authorisation in the UPI app. Secure UPI should never request or store the user's UPI PIN or OTP.</p></div></div>
+        </div>
+        <div class="note-box"><strong>Important security limitation:</strong> QR format checks can identify some invalid or suspicious data, but they cannot prove that a QR code is genuine or guarantee that a payment is safe. A valid QR may still point to a fraudster. Users must verify the payee and amount in the trusted payment app before entering their UPI PIN.</div>
+      </section>
+      <section class="detail-section">
+        <h2><span>04 /</span> Main modules</h2>
+        <div class="feature-grid">
+          <article class="info-card"><div class="info-number">MODULE 01</div><h3>QR Scanner</h3><p>Captures QR information through the camera or an image selection feature.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 02</div><h3>QR Parser</h3><p>Decodes the payload and extracts supported UPI payment fields.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 03</div><h3>Validation Engine</h3><p>Checks required fields, UPI address format, and known invalid or unexpected patterns.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 04</div><h3>Recipient Review Screen</h3><p>Presents the available recipient and amount details in a readable confirmation screen.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 05</div><h3>Risk Warning</h3><p>Displays clear warnings when checks fail and avoids silently opening a payment flow after an invalid scan.</p></article>
+          <article class="info-card"><div class="info-number">MODULE 06</div><h3>Trusted Payment Handoff</h3><p>Offers a user-controlled handoff to a supported UPI app; final authorisation remains with the payment provider and user.</p></article>
+        </div>
+      </section>
+      <section class="detail-section">
+        <h2><span>05 /</span> Benefits, applications and challenges</h2>
+        <p><strong>Potential benefits:</strong> an extra review step before paying, better visibility of the destination UPI ID, clearer warnings, and greater awareness of QR-payment risks.</p>
+        <p><strong>Potential applications:</strong> shop QR payments, merchant-payment demonstrations, student security projects, and user education about checking payment details before authorisation.</p>
+        <p><strong>Engineering challenges:</strong> different QR formats, incomplete recipient information, camera and lighting quality, false alarms, privacy, safe payment-app integration, and keeping validation rules up to date.</p>
+        <p><strong>How to evaluate it:</strong> test with known-good sample UPI QR codes, malformed QR data, unsupported payloads, and test cases with altered recipient details. Measure successful scans, correct parsing, warning accuracy, and whether the user clearly sees the payee details before the payment handoff. Use test data only; do not test by sending money to unknown recipients.</p>
+        <p><strong>My learning:</strong> this project explores how QR scanning, data validation, user confirmation, and secure payment handoff can be combined to make digital payment flows more safety-conscious.</p>
+        <div class="page-actions"><a class="button button-primary" href="index.html#contact">Discuss this project <span>↗</span></a><a class="button button-ghost" href="#solar-tracker">Previous project: Solar Tracker ↑</a><a class="button button-ghost" href="index.html#projects">Back to projects <span>←</span></a></div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><a class="brand" href="index.html"><span class="brand-mark">B.</span><span>BAVADHARANI<span class="brand-dot">.</span></span></a><span>Built with curiosity and continuous learning.</span><a class="back-top" href="#">Back to top ↑</a></footer>
+</body>
+</html>

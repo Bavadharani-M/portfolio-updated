@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b14" />
+  <title>My Introduction | Bavadharani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .voice-page{min-height:100vh;padding:42px 0 80px;position:relative;z-index:1}
+    .voice-top{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:70px}
+    .voice-kicker{font:10px var(--mono);letter-spacing:.16em;color:var(--cyan)}
+    .voice-title{font-size:clamp(42px,7vw,76px);line-height:1.05;letter-spacing:-.06em;margin:18px 0}
+    .voice-subtitle{max-width:650px;color:var(--muted);font-size:14px;line-height:1.9}
+    .voice-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;align-items:stretch}
+    .voice-card{border:1px solid var(--line);border-radius:20px;background:rgba(15,21,38,.8);padding:clamp(22px,4vw,38px);backdrop-filter:blur(14px)}
+    .voice-visual{min-height:350px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+    .mic-orb{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,rgba(114,242,220,.35),rgba(114,242,220,.06) 55%,rgba(169,148,255,.12));border:1px solid rgba(114,242,220,.4);box-shadow:0 0 55px rgba(114,242,220,.09);font-size:38px;margin-bottom:26px;position:relative}
+    .mic-orb:before,.mic-orb:after{content:"";position:absolute;inset:-12px;border:1px solid rgba(114,242,220,.2);border-radius:50%;animation:ring 3s ease-out infinite}
+    .mic-orb:after{animation-delay:1.5s}
+    .wave{height:55px;display:flex;align-items:center;justify-content:center;gap:5px;margin:22px 0 26px}
+    .wave span{width:4px;height:12px;border-radius:9px;background:var(--cyan);opacity:.55;transform-origin:center;transition:height .2s}
+    .voice-page.is-playing .wave span{animation:wave 850ms ease-in-out infinite alternate;opacity:1}
+    .wave span:nth-child(3n){animation-delay:-.35s}.wave span:nth-child(3n + 1){animation-delay:-.6s}.wave span:nth-child(4n){animation-delay:-.15s}
+    @keyframes wave{from{height:8px}to{height:42px}}@keyframes ring{0%{transform:scale(.88);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+    .voice-status{font:10px var(--mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+    .voice-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .voice-control{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);border-radius:9px;padding:12px 17px;font:700 12px var(--sans);cursor:pointer;transition:transform .2s,border-color .2s}
+    .voice-control:hover{transform:translateY(-2px);border-color:rgba(114,242,220,.6)}
+    .voice-control.primary{background:var(--cyan);color:#071014;border-color:var(--cyan)}
+    .transcript-label{font:10px var(--mono);letter-spacing:.14em;color:var(--cyan)}
+    .intro-lines{display:grid;gap:14px;margin-top:24px}
+    .intro-line{padding:14px 16px;border:1px solid rgba(177,193,225,.1);border-radius:10px;color:#8f9bb4;background:rgba(255,255,255,.015);line-height:1.8;font-size:13px;transition:all .45s}
+    .intro-line.active{color:var(--text);border-color:rgba(114,242,220,.35);background:rgba(114,242,220,.055);transform:translateX(4px)}
+    .voice-note{color:var(--muted);font-size:11px;line-height:1.8;margin-top:22px}
+    .voice-progress{width:100%;height:4px;border-radius:8px;background:rgba(177,193,225,.15);overflow:hidden;margin-top:22px}
+    .voice-progress-fill{height:100%;width:0;background:var(--cyan);transition:width .15s linear}
+    @media(max-width:760px){.voice-layout{grid-template-columns:1fr}.voice-top{margin-bottom:42px}.voice-visual{min-height:310px}}
+    @media(prefers-reduced-motion:reduce){.mic-orb:before,.mic-orb:after,.voice-page.is-playing .wave span{animation:none}}
+  </style>
+</head>
+<body>
+  <div class="ambient-universe" id="ambientUniverse" aria-hidden="true"><div class="ambient-stars"></div><div class="ambient-bubbles"></div><div class="ambient-glow ambient-glow-one"></div><div class="ambient-glow ambient-glow-two"></div></div>
+  <div class="noise" aria-hidden="true"></div>
+  <main class="voice-page section-wrap" id="voicePage">
+    <div class="voice-top">
+      <a class="brand" href="index.html"><span class="brand-mark">B.</span><span>BAVADHARANI<span class="brand-dot">/</span></span></a>
+      <a class="button button-ghost" href="personal-details.html"><span>↖</span> Back to Details</a>
+    </div>
+    <span class="voice-kicker">PROFILE / AUDIO INTRODUCTION</span>
+    <h1 class="voice-title">Let's hear<br><span class="gradient-text">my story.</span></h1>
+    <p class="voice-subtitle">A short introduction, spoken in my own voice. Press play to listen and explore a little more about me.</p>
+
+    <section class="voice-layout" aria-label="Audio introduction player">
+      <div class="voice-card voice-visual">
+        <div class="mic-orb" aria-hidden="true">♫</div>
+        <div class="voice-status" id="voiceStatus" aria-live="polite">Ready when you are</div>
+        <div class="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <audio id="introAudio" preload="metadata">
+          <source src="audio/bavadharani-introduction.mpeg" type="audio/mpeg">
+          Your browser does not support audio playback.
+        </audio>
+        <div class="voice-controls">
+          <button class="voice-control primary" id="playButton" type="button">▶ Play Introduction</button>
+          <button class="voice-control" id="restartButton" type="button">↻ Restart</button>
+        </div>
+        <div class="voice-progress" role="progressbar" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar"><div class="voice-progress-fill" id="progressFill"></div></div>
+        <p class="voice-note">Tip: Your browser may need a moment to load the recording. Use the controls to play, pause, or replay it.</p>
+      </div>
+      <div class="voice-card">
+        <span class="transcript-label">INTRODUCTION / ABOUT ME</span>
+        <div class="intro-lines" id="introLines">
+          <div class="intro-line">Hello! I'm Bavadharani, a B.Tech Computer Science and Engineering student.</div>
+          <div class="intro-line">I'm interested in software development, artificial intelligence, cybersecurity, and cloud technologies.</div>
+          <div class="intro-line">I enjoy learning new tools and turning ideas into practical projects.</div>
+          <div class="intro-line">My strengths include adaptability, teamwork, and a willingness to keep learning.</div>
+          <div class="intro-line">My goal is to strengthen my technical skills and grow into a skilled software professional.</div>
+        </div>
+        <p class="voice-note">The text on this page is a written introduction to your profile. The audio player uses the voice recording you provided.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const page = document.getElementById("voicePage");
+    const audio = document.getElementById("introAudio");
+    const playButton = document.getElementById("playButton");
+    const restartButton = document.getElementById("restartButton");
+    const statusText = document.getElementById("voiceStatus");
+    const progressFill = document.getElementById("progressFill");
+    const progressBar = document.getElementById("progressBar");
+    const lines = Array.from(document.querySelectorAll(".intro-line"));
+
+    function updatePlayState(playing) {
+      page.classList.toggle("is-playing", playing);
+      playButton.textContent = playing ? "Ⅱ Pause Introduction" : "▶ Play Introduction";
+      statusText.textContent = playing ? "Playing your introduction" : "Ready when you are";
+    }
+    function highlightLine() {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      const ratio = audio.currentTime / audio.duration;
+      const index = Math.min(lines.length - 1, Math.floor(ratio * lines.length));
+      lines.forEach((line, i) => line.classList.toggle("active", i === index && !audio.paused));
+      progressFill.style.width = (ratio * 100) + "%";
+      progressBar.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+    }
+    playButton.addEventListener("click", async () => {
+      if (audio.paused) {
+        try { await audio.play(); }
+        catch (error) { statusText.textContent = "Audio could not start. Please try again."; }
+      } else audio.pause();
+    });
+    restartButton.addEventListener("click", async () => {
+      audio.currentTime = 0;
+      lines.forEach(line => line.classList.remove("active"));
+      try { await audio.play(); }
+      catch (error) { statusText.textContent = "Press Play Introduction to start."; }
+    });
+    audio.addEventListener("play", () => updatePlayState(true));
+    audio.addEventListener("pause", () => updatePlayState(false));
+    audio.addEventListener("timeupdate", highlightLine);
+    audio.addEventListener("ended", () => {
+      updatePlayState(false);
+      lines.forEach(line => line.classList.remove("active"));
+      progressFill.style.width = "100%";
+      progressBar.setAttribute("aria-valuenow", "100");
+      statusText.textContent = "Introduction complete · Replay anytime";
+    });
+    audio.addEventListener("error", () => {
+      statusText.textContent = "Recording not found. Check the audio folder is included.";
+    });
+
+    const bubbleLayer = document.querySelector(".ambient-bubbles");
+    if (bubbleLayer) {
+      const bubbleCount = window.matchMedia("(max-width: 650px)").matches ? 12 : 22;
+      for (let i = 0; i < bubbleCount; i += 1) {
+        const bubble = document.createElement("span");
+        bubble.className = "ambient-bubble";
+        bubble.style.setProperty("--x", `${(i * 37 + 11) % 100}%`);
+        bubble.style.setProperty("--size", `${12 + ((i * 17) % 38)}px`);
+        bubble.style.setProperty("--duration", `${17 + ((i * 7) % 19)}s`);
+        bubble.style.setProperty("--delay", `${-((i * 11) % 31)}s`);
+        bubbleLayer.appendChild(bubble);
+      }
+    }
+  </script>
+</body>
+</html>
